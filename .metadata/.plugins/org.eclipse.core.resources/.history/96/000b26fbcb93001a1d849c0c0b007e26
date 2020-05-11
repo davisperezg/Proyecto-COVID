@@ -1,0 +1,36 @@
+package com.proyecto.apis;
+
+import java.util.HashMap;
+import java.util.Map;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
+
+import com.proyecto.entity.Ciudadanos;
+import com.proyecto.service.CiudadanosService;
+
+@Controller
+@RequestMapping(value = "api")
+public class ApiController {
+	
+	@Autowired
+	CiudadanosService ciudadanosService;
+	
+	@PostMapping("/saveCiudadano")
+	public @ResponseBody Map<String, Object> grabarMedicamento(
+							@RequestBody Ciudadanos age){
+		Map<String, Object> map=new HashMap<String,Object>();
+		try {
+			ciudadanosService.registrarActualizaCiudadano(age);
+			map.put("dataMensaje", 1);
+		} catch (Exception e) {
+			map.put("dataMensaje", -1);
+			e.printStackTrace();
+		}
+		return map;
+	}
+}

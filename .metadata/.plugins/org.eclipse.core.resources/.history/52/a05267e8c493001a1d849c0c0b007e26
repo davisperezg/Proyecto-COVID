@@ -1,0 +1,22 @@
+package com.proyecto.apis;
+
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
+
+import com.proyecto.entity.Triaje;
+
+public class ApiController {
+	
+	@RequestMapping(value="/listaCiudadano")
+	//@GetMapping("/Listar")
+	public @ResponseBody Map<String, Object> listaMedicamentos(){
+		Map<String, Object> map=new HashMap<String,Object>();
+		List<Triaje> lista=ciudadanosService.listaCiudadanos();
+		map.put("dataCiudadano", lista);
+		return map;
+	}
+}

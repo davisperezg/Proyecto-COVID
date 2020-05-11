@@ -7,7 +7,8 @@ import com.proyecto.entity.Triaje;
 import com.proyecto.entity.Usuarios;
 
 public interface CiudadanosService {
-	void registrarActualizaCiudadano(Ciudadanos c);
+	Ciudadanos registrarActualizaCiudadano(Ciudadanos c);
+	Triaje registrarTriaje(Triaje c);
 	List<Triaje> listaCiudadanos();
 	Triaje findCiudadanos(int cod);
 	//acceso admin

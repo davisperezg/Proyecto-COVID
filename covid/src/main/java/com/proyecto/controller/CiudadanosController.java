@@ -15,12 +15,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
 
 import com.proyecto.entity.Ciudadanos;
 import com.proyecto.entity.Triaje;
 import com.proyecto.entity.Usuarios;
 import com.proyecto.service.CiudadanosService;
+
 
 @Controller
 @RequestMapping(value = "/19")
@@ -53,7 +53,7 @@ public class CiudadanosController {
 			return "login";
 		}
 	}
-	
+	/*
 	@RequestMapping(value="recargarCiudadanos",method = RequestMethod.GET)
 	public String recargarCiudadanos(HttpSession session,Model model) {
 		if(session.getAttribute("pSession")!=null) {
@@ -65,7 +65,7 @@ public class CiudadanosController {
 			return "login";
 		}
 	}
-	
+	*/
 	@RequestMapping(value = "LoginProccess",method = RequestMethod.POST)
 	public @ResponseBody Map<String, Object> validarUsuario(Model model,HttpSession session,
 			@RequestParam("pLogin") String pLogin,
@@ -85,7 +85,7 @@ public class CiudadanosController {
 	}
 	
 	@RequestMapping(value="/saveCiudadano")
-	public @ResponseBody Map<String, Object> grabarMedicamento(
+	public @ResponseBody Map<String, Object> grabarCiudadanos(
 							@RequestBody Ciudadanos age){
 		Map<String, Object> map=new HashMap<String,Object>();
 		try {
@@ -97,9 +97,9 @@ public class CiudadanosController {
 		}
 		return map;
 	}
-	
+	//@GetMapping("/Listar")
 	@RequestMapping(value="/listaCiudadano")
-	public @ResponseBody Map<String, Object> listaMedicamentos(){
+	public @ResponseBody Map<String, Object> listaCiudadanos(){
 		Map<String, Object> map=new HashMap<String,Object>();
 		List<Triaje> lista=ciudadanosService.listaCiudadanos();
 		map.put("dataCiudadano", lista);
@@ -107,7 +107,7 @@ public class CiudadanosController {
 	}
 	
 	@RequestMapping(value="/buscarCiudadano")
-	public @ResponseBody Map<String, Object> buscarProducto(
+	public @ResponseBody Map<String, Object> buscarCiudadanos(
 							@RequestParam("codigo") int cod){
 		Map<String, Object> map=new HashMap<String,Object>();
 		map.put("dataBuscar",ciudadanosService.findCiudadanos(cod));

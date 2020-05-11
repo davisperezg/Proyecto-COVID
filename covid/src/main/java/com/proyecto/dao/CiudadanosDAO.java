@@ -7,8 +7,9 @@ import com.proyecto.entity.Triaje;
 import com.proyecto.entity.Usuarios;
 
 public interface CiudadanosDAO {
-	void registrarActualizaCiudadano(Ciudadanos c);
+	Ciudadanos registrarActualizaCiudadano(Ciudadanos c);
 	List<Triaje> listaCiudadanos();
+	Triaje registrarTriaje(Triaje c);
 	Triaje findCiudadanos(int cod);
 	//acceso admin
 	Usuarios loginSistema(String pLogin, String pContrasenia);

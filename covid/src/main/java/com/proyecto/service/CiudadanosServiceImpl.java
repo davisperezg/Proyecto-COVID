@@ -16,9 +16,9 @@ public class CiudadanosServiceImpl implements CiudadanosService{
 	@Autowired
 	CiudadanosDAO ciudadanosDAO;
 
-	public void registrarActualizaCiudadano(Ciudadanos c) {
+	public Ciudadanos registrarActualizaCiudadano(Ciudadanos c) {
 		// TODO Auto-generated method stub
-		ciudadanosDAO.registrarActualizaCiudadano(c);
+		return ciudadanosDAO.registrarActualizaCiudadano(c);
 	}
 
 	public List<Triaje> listaCiudadanos() {
@@ -34,6 +34,12 @@ public class CiudadanosServiceImpl implements CiudadanosService{
 	public Triaje findCiudadanos(int cod) {
 		// TODO Auto-generated method stub
 		return ciudadanosDAO.findCiudadanos(cod);
+	}
+
+	@Override
+	public Triaje registrarTriaje(Triaje c) {
+		// TODO Auto-generated method stub
+		return ciudadanosDAO.registrarTriaje(c);
 	}
 
 }
