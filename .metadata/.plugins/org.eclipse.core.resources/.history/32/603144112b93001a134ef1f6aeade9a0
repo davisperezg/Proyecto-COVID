@@ -1,0 +1,30 @@
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+   <table style="background-color: white;" id="id_table" class="table table-sm table-bordered " role="grid" aria-describedby="example1_info">
+                <thead>
+	                <tr>
+	                	<th>ID</th>
+						<th>NOMBRES</th>
+						<th>FECHA DE NACIMIENTO</th>
+						<th>CELULAR</th>
+						<th>NACIONALIDAD</th>
+						<th>TIPO DE DOCUMENTO</th>
+						<th>NÚMERO DE DOCUMENTO</th>
+						<th></th>
+	                </tr> 
+                </thead>
+                <tbody>
+              		<c:forEach items="${dataCiudadanos}" var="fila">
+		                <tr>
+		                  <td>${fila.idCiudadanos}</td>
+		                  <td>${fila.nombres}</td>
+		                  <td>${fila.fechaNacimiento}</td>
+		                  <td>${fila.celular}</td>
+		                  <td>${fila.nacionalidad}</td>
+		                  <td>${fila.tipoDocumento}</td>
+		                  <td>${fila.numeroDocumento}</td>
+		                  <td><a onclick="modalCiudadan();" href="#">Editar datos</a></td>
+		                </tr>
+					</c:forEach>      
+                </tbody>
+               
+   </table>

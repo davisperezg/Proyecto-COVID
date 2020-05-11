@@ -1,0 +1,13 @@
+package com.proyecto.dao;
+
+import java.util.List;
+
+import com.proyecto.entity.Ciudadanos;
+
+public interface CiudadanosDAO {
+	void registrarActualizaCiudadano(Ciudadanos c);
+	List<Ciudadanos> listaCiudadanos();
+	
+	//acceso admin
+	Usuarios loginSistema(String pLogin, String pContrasenia);
+}
