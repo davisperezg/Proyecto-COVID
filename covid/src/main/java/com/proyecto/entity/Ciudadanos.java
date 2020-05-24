@@ -17,7 +17,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 
 @Entity
-@Table(name="ciudadanos")
+@Table(name="Ciudadanos")
 public class Ciudadanos implements Serializable{
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)

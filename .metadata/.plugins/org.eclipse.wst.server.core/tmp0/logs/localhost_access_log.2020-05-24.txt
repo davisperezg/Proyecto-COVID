@@ -1,0 +1,14 @@
+0:0:0:0:0:0:0:1 - - [24/May/2020:00:01:42 -0500] "GET /covid/19/principal/ HTTP/1.1" 200 23800
+0:0:0:0:0:0:0:1 - - [24/May/2020:00:01:43 -0500] "GET /covid/19/listaCiudadano HTTP/1.1" 200 1870
+0:0:0:0:0:0:0:1 - - [24/May/2020:00:03:24 -0500] "GET /covid/19/principal/ HTTP/1.1" 200 23812
+0:0:0:0:0:0:0:1 - - [24/May/2020:00:03:24 -0500] "GET /covid/19/listaCiudadano HTTP/1.1" 200 1870
+0:0:0:0:0:0:0:1 - - [24/May/2020:00:04:08 -0500] "GET /covid/19/principal/ HTTP/1.1" 200 23812
+0:0:0:0:0:0:0:1 - - [24/May/2020:00:04:09 -0500] "GET /covid/19/listaCiudadano HTTP/1.1" 200 1870
+0:0:0:0:0:0:0:1 - - [24/May/2020:00:05:29 -0500] "GET /covid/19/principal/ HTTP/1.1" 200 23812
+0:0:0:0:0:0:0:1 - - [24/May/2020:00:05:29 -0500] "GET /covid/19/listaCiudadano HTTP/1.1" 200 1870
+0:0:0:0:0:0:0:1 - - [24/May/2020:00:08:33 -0500] "GET /covid/19/principal/ HTTP/1.1" 200 23820
+0:0:0:0:0:0:0:1 - - [24/May/2020:00:08:33 -0500] "GET /covid/19/listaCiudadano HTTP/1.1" 200 1870
+0:0:0:0:0:0:0:1 - - [24/May/2020:00:08:46 -0500] "POST /covid/19/saveCiudadano HTTP/1.1" 200 148
+0:0:0:0:0:0:0:1 - - [24/May/2020:00:08:56 -0500] "POST /covid/19/saveTriaje HTTP/1.1" 200 252
+0:0:0:0:0:0:0:1 - - [24/May/2020:00:08:56 -0500] "GET /covid/19/listaCiudadano HTTP/1.1" 200 2105
+0:0:0:0:0:0:0:1 - - [24/May/2020:00:08:58 -0500] "GET /covid/19/buscarCiudadano?codigo=8 HTTP/1.1" 200 260

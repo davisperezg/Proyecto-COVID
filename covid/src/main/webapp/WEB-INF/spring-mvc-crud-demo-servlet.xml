@@ -42,26 +42,24 @@
 	<bean id="myDataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource"
           destroy-method="close"> 
         <property name="driverClass" value="com.mysql.jdbc.Driver" />
-      	 <property name="jdbcUrl" value="jdbc:mysql://localhost:3306/bd_covid19?useSSL=false" />
-        <property name="user" value="root" />
-        <property name="password" value="mysql" /><!-- these are connection pool properties for C3P0 
+      	 <property name="jdbcUrl" value="jdbc:mysql://mysql3000.mochahost.com/kemaytec_covid19?useSSL=false" />
+        <property name="user" value="kemaytec_covid" />
+        <property name="password" value="4zB?NFu^np{@" /><!-- these are connection pool properties for C3P0 
        <property name="driverClass" value="com.mysql.jdbc.Driver" />
-         <property name="jdbcUrl" value="jdbc:mysql://mysql3000.mochahost.com/kemaytec_mydb?useSSL=false" />
-        <property name="user" value="kemaytec_admin" />
-        <property name="password" value="D@@@@@123" />
+         <property name="jdbcUrl" value="jdbc:mysql://mysql3000.mochahost.com/kemaytec_covid19?useSSL=false" />
+        <property name="user" value="kemaytec_covid" />
+        <property name="password" value="4zB?NFu^np{@" />
         -->
         <!-- 
         <property name="jdbcUrl" value="jdbc:mysql://localhost:3306/kemaytec_mydb?useSSL=false" />
         <property name="user" value="root" />
         <property name="password" value="mysql" />
          -->
-        <property name="acquireIncrement" value="1"/>
-        <property name="idleConnectionTestPeriod" value="100" />
-        <property name="maxPoolSize" value="100" />
-        <property name="minPoolSize" value="10" />
-        <property name="checkoutTimeout" value="1800" />
+        <property name="acquireIncrement" value="1"/>  
+        <property name="maxPoolSize" value="5" />
+        <property name="minPoolSize" value="1" />
+        <property name="checkoutTimeout" value="60" />
         <property name="maxIdleTime" value="60"/> 
-        <property name="BreakAfterAcquireFailure" value="true"/>
        
 	</bean>  
 	 

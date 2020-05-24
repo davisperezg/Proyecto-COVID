@@ -50,7 +50,7 @@ public class CiudadanosController {
 		}else {
 			session.removeAttribute("pSession");
 			session.invalidate();
-			return "login";
+			return "session_invalidate";
 		}
 	}
 	/*
@@ -89,14 +89,27 @@ public class CiudadanosController {
 							@RequestBody Ciudadanos age){
 		Map<String, Object> map=new HashMap<String,Object>();
 		try {
-			ciudadanosService.registrarActualizaCiudadano(age);
-			map.put("dataMensaje", 1);
+			map.put("dataMensaje", ciudadanosService.registrarActualizaCiudadano(age));
 		} catch (Exception e) {
 			map.put("dataMensaje", -1);
 			e.printStackTrace();
 		}
 		return map;
 	}
+	
+	@RequestMapping(value="/saveTriaje")
+	public @ResponseBody Map<String, Object> grabarTriaje(
+							@RequestBody Triaje t){
+		Map<String, Object> map=new HashMap<String,Object>();
+		try {
+			map.put("dataMensaje", ciudadanosService.registrarTriaje(t));
+		} catch (Exception e) {
+			map.put("dataMensaje", -1);
+			e.printStackTrace();
+		}
+		return map;
+	}
+
 	//@GetMapping("/Listar")
 	@RequestMapping(value="/listaCiudadano")
 	public @ResponseBody Map<String, Object> listaCiudadanos(){

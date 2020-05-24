@@ -37,7 +37,6 @@
 <fullyQualifiedTypeName name="javax.persistence.OneToMany"/>
 <fullyQualifiedTypeName name="com.proyecto.entity.Usuarios"/>
 <fullyQualifiedTypeName name="com.proyecto.entity.Ciudadanos"/>
-<fullyQualifiedTypeName name="com.proyecto.entity.Triaje"/>
 <fullyQualifiedTypeName name="javax.xml.bind.annotation.XmlAccessorType"/>
 <fullyQualifiedTypeName name="javax.xml.bind.annotation.XmlAccessType"/>
 <fullyQualifiedTypeName name="javax.xml.bind.annotation.XmlElement"/>
@@ -55,4 +54,5 @@
 <fullyQualifiedTypeName name="javax.swing.text.html.FormSubmitEvent.MethodType"/>
 <fullyQualifiedTypeName name="org.springframework.stereotype.Controller"/>
 <fullyQualifiedTypeName name="org.springframework.web.bind.annotation.RequestMapping"/>
+<fullyQualifiedTypeName name="com.proyecto.entity.Triaje"/>
 </qualifiedTypeNameHistroy>
