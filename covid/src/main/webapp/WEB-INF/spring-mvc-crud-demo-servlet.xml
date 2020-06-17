@@ -42,7 +42,7 @@
 	<bean id="myDataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource"
           destroy-method="close"> 
         <property name="driverClass" value="com.mysql.jdbc.Driver" />
-      	 <property name="jdbcUrl" value="jdbc:mysql://mysql3000.mochahost.com/kemaytec_covid19?useSSL=false" />
+      	<property name="jdbcUrl" value="jdbc:mysql://mysql3000.mochahost.com/kemaytec_covid19?useSSL=false" />
         <property name="user" value="kemaytec_covid" />
         <property name="password" value="4zB?NFu^np{@" /><!-- these are connection pool properties for C3P0 
        <property name="driverClass" value="com.mysql.jdbc.Driver" />

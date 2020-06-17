@@ -38,10 +38,22 @@ public class Triaje implements Serializable{
 	@Column(name="pregunta5")
 	private String pregunta5;
 	
+	@Column(name="estado")
+	private String estado;
+	
 	@ManyToOne
 	@JoinColumn(name="idCiudadanos")
 	private Ciudadanos ciudadanos;
 	
+	
+
+	public String getEstado() {
+		return estado;
+	}
+
+	public void setEstado(String estado) {
+		this.estado = estado;
+	}
 
 	public Ciudadanos getCiudadanos() {
 		return ciudadanos;

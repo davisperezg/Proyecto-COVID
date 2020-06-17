@@ -1,3 +1,0 @@
-<%
-	response.sendRedirect("./19/");
-%>

@@ -11,6 +11,7 @@ public interface CiudadanosService {
 	Triaje registrarTriaje(Triaje c);
 	List<Triaje> listaCiudadanos();
 	Triaje findCiudadanos(int cod);
+	Triaje updateTriaje(Triaje c);
 	//acceso admin
 	Usuarios loginSistema(String pLogin, String pContrasenia);
 }

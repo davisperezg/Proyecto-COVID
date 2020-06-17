@@ -11,6 +11,7 @@ public interface CiudadanosDAO {
 	List<Triaje> listaCiudadanos();
 	Triaje registrarTriaje(Triaje c);
 	Triaje findCiudadanos(int cod);
+	Triaje updateTriaje(Triaje c);
 	//acceso admin
 	Usuarios loginSistema(String pLogin, String pContrasenia);
 }

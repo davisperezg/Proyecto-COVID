@@ -42,4 +42,10 @@ public class CiudadanosServiceImpl implements CiudadanosService{
 		return ciudadanosDAO.registrarTriaje(c);
 	}
 
+	@Override
+	public Triaje updateTriaje(Triaje c) {
+		// TODO Auto-generated method stub
+		return ciudadanosDAO.updateTriaje(c);
+	}
+
 }

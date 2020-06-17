@@ -39,9 +39,9 @@
 						<th>NACIONALIDAD</th>
 						<th>TIPO DE DOCUMENTO</th>
 						<th>NÚMERO DE DOCUMENTO</th>
-						
+						<th>ESTADO</th>
 	                </tr> 
-                </thead> 
+                </thead>  
                 <tbody>
               		     
                 </tbody>
@@ -60,14 +60,14 @@
         <div class="modal-dialog modal-lg">
           <div class="modal-content">
             <div class="modal-header">
-              <h4 class="modal-title" id="id_titulo">Editar Ciudadano</h4>
-              <button type="button" id="id_close" class="close" data-dismiss="modal" aria-label="Close">
+              <h4 class="modal-title" id="id_titulo">Editar Ciudadano</h4> 
+              <button type="button" id="id_close" class="close" onclick="limpiar();" aria-label="Close">
                 <span aria-hidden="true">×</span>
               </button>
             </div>
         <div class="modal-body">
     		<input type="hidden" class="form-control" id="id_codigo">
-    	
+    		<input type="hidden" class="form-control" id="id_triaje">
         	<div class="row">
 		   		<div class="col-md-6">
 			   		<div class="form-group">
@@ -118,6 +118,17 @@
 			                    <label class="col-form-label" for="inputSuccess"> Número de documento	
 			                      </label>
 			                    <input type="text" class="form-control" id="id_numero_documento" name="numeroDocumento">
+				     </div>                   
+		   		</div> 
+		   		<div class="col-md-6">	           
+			         <div id="div02" class="form-group">
+			   	
+			                    <label class="col-form-label" for="inputSuccess"> Estado	
+			                      </label>
+			                    <select class="form-control" id="id_estado" name="estado">
+			                      	<option value="INFECTADO">INFECTADO</option>
+			                      	<option value="NO INFECTADO">NO INFECTADO</option>
+			                      </select>
 				     </div>                   
 		   		</div> 
 		   		</div>
@@ -389,60 +400,93 @@ function editar(cod){
 		//$("#id_fecha_nacimiento").val(response.dataBuscar.nacionalidad);
 		$("#id_tipo_documento").val(response.dataBuscar.ciudadanos.tipoDocumento);
 		$("#id_numero_documento").val(response.dataBuscar.ciudadanos.numeroDocumento);
+		$("#id_estado").val(response.dataBuscar.estado);
 		
+		$("#id_triaje").val(response.dataBuscar.idTriaje);
 		$("#id_pregunta_1").val(response.dataBuscar.pregunta1);
 		$("#id_pregunta_2").val(response.dataBuscar.pregunta2);
-		$("#id_pregunta_3").val(response.dataBuscar.pregunta3);
+		$("#id_pregunta_3").val(response.dataBuscar.pregunta3); 
 		$("#id_pregunta_4").val(response.dataBuscar.pregunta4);
 		$("#id_pregunta_5").val(response.dataBuscar.pregunta5);
 	})
 	$("#modal-lg").modal({show:true,keyboard:false,backdrop:'static'});
 }
 function actualizarCiudadano(){
-				var cod,nom,cel,nac,tip,num;
+				var cod,nom,cel,nac,tip,num,est,tri,pre1,pre2,pre3,pre4,pre5;
 				cod = $("#id_codigo").val();
 				nom = $("#id_nombres").val();
 				cel = $("#id_celular").val();
 				nac = $("#id_nacionalidad").val();
 				tip = $("#id_tipo_documento").val();
 				num = $("#id_numero_documento").val();
-		
+				est = $("#id_estado").val();
+				tri = $("#id_triaje").val();
+				pre1 = $("#id_pregunta_1").val();
+				pre2 = $("#id_pregunta_2").val();
+				pre3 = $("#id_pregunta_3").val();
+				pre4 = $("#id_pregunta_4").val();
+				pre5 = $("#id_pregunta_5").val();
 				json=JSON.stringify({idCiudadanos:cod,nombres:nom,
 					celular:cel,nacionalidad:nac,tipoDocumento:tip,
 					numeroDocumento:num});
-			   	//AJAX
-				$.ajax({ 
-					url:'../saveCiudadano',
-					type:'POST',
-					data:json,
-					contentType:"application/json",
-					success:function(response){
-						if(response.dataMensaje!=-1){
-							//usar metodo tabla de proycagenda-ke
-							tablaCiudadanos();
-							$("#modal-lg").modal("hide");
+				jsonEstado = JSON.stringify({idTriaje:tri,pregunta1:pre1,pregunta2:pre2,pregunta3:pre3,pregunta4:pre4,pregunta5:pre5,estado:est,ciudadanos:{idCiudadanos:cod}});
+				if(est!=null){
+					$.ajax({ 
+						url:'../updateTriaje',
+						type:'POST',
+						data:jsonEstado,
+						contentType:"application/json",
+						success:function(response){
+							if(response.dataMensaje!=-1){
+								//usar metodo tabla de proycagenda-ke
+								tablaCiudadanos();
+								$("#modal-lg").modal("hide");
+							}
+							else
+								alert("Error al actualizar triaje");
+						},
+						beforeSend:function(){
+							$.ajax({ 
+								url:'../saveCiudadano',
+								type:'POST',
+								data:json,
+								contentType:"application/json",
+								success:function(response){
+									if(response.dataMensaje!=-1){
+										//usar metodo tabla de proycagenda-ke
+										//tablaCiudadanos();
+										//$("#modal-lg").modal("hide");
+									}
+									else
+										alert("Error al actualizar ciudadano");
+								},
+								error:function(e){
+									alert("Error en el controller ciudadano");
+								}
+							}) 
+						},
+						error:function(e){
+							alert("Error en el controller triaje");
 						}
-						else
-							alert("Error al actualizar");
-					},
-					error:function(e){
-						alert("Error en el controller");
-					}
-				})  
+					}) 
+				}
+				 
 } 
 function tablaCiudadanos(){ 
+	//listaTriaje
 	$.getJSON("../listaCiudadano",{},function(response){
 		//eliminar tabla
 		//$("#id_table").DataTable().destroy(); se necesita libreria
 		//limpiar filas del cuerpo de la tabla
 		$("#id_table tbody").empty(); 
 		$.each(response.dataCiudadano,function(index,item){
-			boton = '<a href="#" onclick="editar('+item.ciudadanos.idCiudadanos+')">Editar</a>';
-			$("#id_table").append("<tr><td>"+item.ciudadanos.idCiudadanos+"</td><td>"+item.ciudadanos.nombres+"</td><td>"+
+			boton = '<a href="#" onclick="editar('+item.idTriaje+')">Editar</a>';
+			$("#id_table").append("<tr><td>"+item.idTriaje+"</td><td>"+item.ciudadanos.nombres+"</td><td>"+
 		 						item.ciudadanos.celular+"</td><td>"+ 
 		 						item.ciudadanos.nacionalidad+"</td><td>"+
 		 						item.ciudadanos.tipoDocumento+"</td><td>"+
 		 						item.ciudadanos.numeroDocumento+"</td><td>"+
+		 						item.estado+"</td><td>"+
 		 						boton+"</td></tr>");
 			 
 		});
@@ -473,6 +517,22 @@ function salirModalTriaje(){
     {
         
     }
+}
+function limpiar(){
+	$("#id_codigo").val("");
+	$("#id_nombres").val("");
+	$("#id_celular").val("");
+	$("#id_nacionalidad").val(0);
+	$("#id_tipo_documento").val(0);
+	$("#id_numero_documento").val("");
+	
+	$("#id_pregunta_1").val("");
+	$("#id_pregunta_2").val("");
+	$("#id_pregunta_3").val("");
+	$("#id_pregunta_4").val("");
+	$("#id_pregunta_5").val("");
+	
+	$("#modal-lg").modal("hide"); 
 }
 function limpiarCiudadano(){
 	$("#id_nombres_new").val("");

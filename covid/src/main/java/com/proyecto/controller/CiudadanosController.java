@@ -109,6 +109,19 @@ public class CiudadanosController {
 		}
 		return map;
 	}
+	
+	@RequestMapping(value="/updateTriaje")
+	public @ResponseBody Map<String, Object> updateTriaje(
+							@RequestBody Triaje t){
+		Map<String, Object> map=new HashMap<String,Object>();
+		try {
+			map.put("dataMensaje", ciudadanosService.updateTriaje(t));
+		} catch (Exception e) {
+			map.put("dataMensaje", -1);
+			e.printStackTrace();
+		}
+		return map;
+	}
 
 	//@GetMapping("/Listar")
 	@RequestMapping(value="/listaCiudadano")

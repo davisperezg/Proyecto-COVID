@@ -113,5 +113,23 @@ public class CiudadanosDAOImpl implements CiudadanosDAO{
 		}
 		return c;
 	}
+
+	@Override
+	@Transactional
+	public Triaje updateTriaje(Triaje c) {
+		Session session=null;
+		try {
+			session=sessionFactory.openSession();
+			session.getTransaction().begin();
+			session.update(c);//insert y update
+			session.getTransaction().commit();
+		} catch (Exception e) {
+			session.getTransaction().rollback();
+			e.printStackTrace();
+		}finally {
+			session.close();
+		}
+		return c;
+	}
 	
 }

@@ -60,8 +60,8 @@
         <div class="modal-dialog modal-lg">
           <div class="modal-content">
             <div class="modal-header">
-              <h4 class="modal-title" id="id_titulo">Editar Ciudadano</h4>
-              <button type="button" id="id_close" class="close" data-dismiss="modal" aria-label="Close">
+              <h4 class="modal-title" id="id_titulo">Editar Ciudadano</h4> 
+              <button type="button" id="id_close" class="close" onclick="limpiar();" aria-label="Close">
                 <span aria-hidden="true">×</span>
               </button>
             </div>
@@ -437,8 +437,8 @@ function tablaCiudadanos(){
 		//limpiar filas del cuerpo de la tabla
 		$("#id_table tbody").empty(); 
 		$.each(response.dataCiudadano,function(index,item){
-			boton = '<a href="#" onclick="editar('+item.ciudadanos.idCiudadanos+')">Editar</a>';
-			$("#id_table").append("<tr><td>"+item.ciudadanos.idCiudadanos+"</td><td>"+item.ciudadanos.nombres+"</td><td>"+
+			boton = '<a href="#" onclick="editar('+item.idTriaje+')">Editar</a>';
+			$("#id_table").append("<tr><td>"+item.idTriaje+"</td><td>"+item.ciudadanos.nombres+"</td><td>"+
 		 						item.ciudadanos.celular+"</td><td>"+ 
 		 						item.ciudadanos.nacionalidad+"</td><td>"+
 		 						item.ciudadanos.tipoDocumento+"</td><td>"+
@@ -473,6 +473,22 @@ function salirModalTriaje(){
     {
         
     }
+}
+function limpiar(){
+	$("#id_codigo").val("");
+	$("#id_nombres").val("");
+	$("#id_celular").val("");
+	$("#id_nacionalidad").val(0);
+	$("#id_tipo_documento").val(0);
+	$("#id_numero_documento").val("");
+	
+	$("#id_pregunta_1").val("");
+	$("#id_pregunta_2").val("");
+	$("#id_pregunta_3").val("");
+	$("#id_pregunta_4").val("");
+	$("#id_pregunta_5").val("");
+	
+	$("#modal-lg").modal("hide"); 
 }
 function limpiarCiudadano(){
 	$("#id_nombres_new").val("");
