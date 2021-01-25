@@ -1,3 +1,11 @@
 # PROYECTO-COVID19
-PROYECTO COVID - PARTE ADMINISTRATIVA, LISTA, REGISTRA TRIAJE Y ACTUALIZA  DATOS DEL CIUDADANO
+
+Herramientas utilizadas:
+* JAVA
+* SPRING BOOT
+* MYSQL
+* MAVEN
+
+PROYECTO GRUPAL
+Plataforma web parte administrativa, lista, registra triaje y actualiza datos del ciudadano. Se creó funciones para el consumo de API REST para la aplicación movil. 
 
