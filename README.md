@@ -1,4 +1,4 @@
-# PROYECTO-ACADEMICO-COVID19
+# PROYECTO-COVID19
 
 Herramientas utilizadas:
 * JAVA
